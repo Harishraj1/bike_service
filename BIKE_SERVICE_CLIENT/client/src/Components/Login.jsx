@@ -1,32 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import logo from "./images/logo.png";
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const defaultTheme = createTheme();
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -71,9 +55,7 @@ function Login() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs" className="fadeInZoom">
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
@@ -98,7 +80,7 @@ function Login() {
               autoFocus
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              error={!!errors.email}
+              error={errors.email}
               helperText={errors.email}
             />
             <TextField
@@ -112,7 +94,7 @@ function Login() {
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              error={!!errors.password}
+              error={errors.password}
               helperText={errors.password}
             />
             <FormControlLabel
@@ -135,9 +117,7 @@ function Login() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
-    </ThemeProvider>
   );
 }
 

@@ -29,7 +29,8 @@ function Service_Request() {
 
     return (
         <div className="flex">
-            <Navbar></Navbar>
+            
+            <Navbar />
 
             <div className="flex-1 p-6 ml-72 overflow-x-auto">
                 <h1 className="text-3xl font-bold mb-6">Service Requests</h1>

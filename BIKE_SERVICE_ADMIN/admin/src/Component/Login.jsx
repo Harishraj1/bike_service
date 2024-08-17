@@ -1,33 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import logo from "./images/logo.png";
 import { useNavigate } from 'react-router-dom';
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
-const defaultTheme = createTheme();
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -57,7 +40,7 @@ function Login() {
     if (!validate()) {
       return;
     }
-  
+
     try {
       const response = await axios.post('http://localhost:3005/login-admin', { email, password });
       if (response.data) {
@@ -70,12 +53,11 @@ function Login() {
       alert('An error occurred. Please try again.');
     }
   };
-  
+
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+
       <Container component="main" maxWidth="xs" className="fadeInZoom">
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
@@ -100,7 +82,7 @@ function Login() {
               autoFocus
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              error={!!errors.email}
+              error={errors.email}
               helperText={errors.email}
             />
             <TextField
@@ -114,7 +96,7 @@ function Login() {
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              error={!!errors.password}
+              error={errors.password}
               helperText={errors.password}
             />
             <FormControlLabel
@@ -124,22 +106,13 @@ function Login() {
             <Button
               type="submit"
               fullWidth
-              sx={{ mt: 3, mb: 2, color:"white", backgroundColor: '#AB65F6','&:hover': {backgroundColor: '#AB65F6'}}}
+              sx={{ mt: 3, mb: 2, color: "white", backgroundColor: '#AB65F6', '&:hover': { backgroundColor: '#AB65F6' } }}
             >
               Sign In
             </Button>
-            <Grid container>
-              <Grid item>
-                <Link href="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
-    </ThemeProvider>
   );
 }
 
