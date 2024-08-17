@@ -8,7 +8,7 @@ function User_Login() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get("http://localhost:9000/users");
+                const response = await axios.get("http://localhost:3005/users");
                 setUsers(response.data);
             } catch (error) {
                 console.error("Error fetching users:", error);

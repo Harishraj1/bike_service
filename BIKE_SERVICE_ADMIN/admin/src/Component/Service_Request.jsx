@@ -11,7 +11,7 @@ function Service_Request() {
 
     const fetchServiceRequests = async () => {
         try {
-            const response = await axios.get("http://localhost:9000/servicerequests");
+            const response = await axios.get("http://localhost:3005/servicerequests");
             setServiceRequests(response.data);
         } catch (error) {
             console.error("Error fetching service requests:", error);
@@ -20,7 +20,7 @@ function Service_Request() {
 
     const handleStatusChange = async (id, newStatus) => {
         try {
-            await axios.put(`http://localhost:9000/servicerequests/${id}`, { status: newStatus });
+            await axios.put(`http://localhost:3005/servicerequests/${id}`, { status: newStatus });
             fetchServiceRequests();
         } catch (error) {
             console.error("Error updating status:", error);

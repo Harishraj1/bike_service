@@ -17,7 +17,7 @@ function AdminPanel() {
   // Define the fetchAdminDetails function outside useEffect so it can be reused
   const fetchAdminDetails = async () => {
     try {
-      const response = await axios.get('http://localhost:9000/admin-details');
+      const response = await axios.get('http://localhost:3005/admin-details');
       setAdminDetails(response.data);
     } catch (error) {
       console.error('Error fetching admin details:', error);
@@ -51,7 +51,7 @@ function AdminPanel() {
     }
 
     try {
-      await axios.post('http://localhost:9000/register-admin', { name, email, password });
+      await axios.post('http://localhost:3005/register-admin', { name, email, password });
       setMessage('Admin added successfully!');
       setName('');
       setEmail('');

@@ -11,10 +11,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/admin" element={<Admin_panal></Admin_panal>}></Route>
-        <Route path="/avaliable_service" element={<Service_Avaliable></Service_Avaliable>}></Route>
-        <Route path="/userlogin" element={<User_Login></User_Login>}></Route>
-        <Route path="/service_req" element={<Service_Request></Service_Request>}></Route>
+        <Route path="/admin" element={<Admin_panal />}></Route>
+        <Route path="/avaliable_service" element={<Service_Avaliable />}></Route>
+        <Route path="/userlogin" element={<User_Login />}></Route>
+        <Route path="/service_req" element={<Service_Request />}></Route>
       </Routes>
     </BrowserRouter>
   );

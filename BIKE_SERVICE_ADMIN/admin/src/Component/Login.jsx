@@ -59,9 +59,9 @@ function Login() {
     }
   
     try {
-      const response = await axios.post('http://localhost:9000/login-admin', { email, password });
+      const response = await axios.post('http://localhost:3005/login-admin', { email, password });
       if (response.data) {
-        navigate('/admin'); // Navigate to admin panel upon successful login
+        navigate('/admin');
       } else {
         alert('Invalid email or password. Please try again.');
       }
