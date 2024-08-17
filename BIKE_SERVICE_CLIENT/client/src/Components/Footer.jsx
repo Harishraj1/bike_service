@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import footer_logo from './images/footer_logo.png';
+import footer_logo from './asset/footer_logo.png';
 
 function Footer({ isLoggedIn }) {
   return (

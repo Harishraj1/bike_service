@@ -18,7 +18,7 @@ function MyService() {
     const fetchServiceRequests = async () => {
       try {
         const response = await axios.get('http://localhost:2000/myservices', {
-          params: { mobnumber: storedFormMobileNumber }
+          params: { mobnumber: storedFormMobileNumber } //use to send query parameter
         });
         setServiceRequests(response.data);
       } catch (error) {
@@ -45,19 +45,19 @@ function MyService() {
       <div className='flex-grow w-3/4 mx-auto mt-28 mb-10'>
         <h1 className='text-3xl font-semibold mb-6 text-center'>Your Bookings</h1>
         <div className='space-y-4'>
-          {serviceRequests.map((request) => (
-            <div key={request._id} className="bg-white shadow-md rounded-lg p-6">
-              <h2 className='text-xl font-bold mb-2'><label>Name: </label>{request.name}</h2>
+          {serviceRequests.map((item) => (
+            <div key={item._id} className="bg-white shadow-md rounded-lg p-6">
+              <h2 className='text-xl font-bold mb-2'><label>Name: </label>{item.name}</h2>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                 <div>
-                  <p><span className='font-semibold'>Bike Model:</span> {request.bikeModel}</p>
-                  <p><span className='font-semibold'>Delivery Date:</span> {request.deliveryDate}</p>
-                  <p><span className='font-semibold'>Address:</span> {request.address}</p>
+                  <p><span className='font-semibold'>Bike Model:</span> {item.bikeModel}</p>
+                  <p><span className='font-semibold'>Delivery Date:</span> {item.deliveryDate}</p>
+                  <p><span className='font-semibold'>Address:</span> {item.address}</p>
                 </div>
                 <div>
-                  <p><span className='font-semibold'>Services:</span> {request.selectedServices.join(', ')}</p>
-                  <p><span className='font-semibold'>Total Cost:</span> ₹{request.totalCost}</p>
-                  <p><span className='font-semibold'>Status:</span> <span className='font-bold'>{request.status}</span></p>
+                  <p><span className='font-semibold'>Services:</span> {item.selectedServices.join(', ')}</p>
+                  <p><span className='font-semibold'>Total Cost:</span> ₹{item.totalCost}</p>
+                  <p><span className='font-semibold'>Status:</span> <span className='font-bold'>{item.status}</span></p>
                 </div>
               </div>
             </div>

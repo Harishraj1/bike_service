@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from './images/logo.png';
+import logo from './asset/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -35,7 +35,7 @@ function Navbar({ isLoggedIn, handleLogout, isMyServicePage }) {
           <p className='hover:font-medium cursor-pointer' onClick={handleAboutClick}>
             About Us
           </p>
-          {isLoggedIn && !isMyServicePage && (
+          {isLoggedIn && (
             <>
               <p className='hover:font-medium'>
                 <Link to="/myservices">My Service</Link>

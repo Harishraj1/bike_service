@@ -6,9 +6,9 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { Tilt } from 'react-tilt';
 import GetService from './GetService';
-import hero_img from './images/hero_img.png';
-import review_img from './images/review_img.png';
-import vector from './images/Vector.png';
+import hero_img from './asset/hero_img.png';
+import review_img from './asset/review_img.png';
+import vector from './asset/Vector.png';
 
 // Import data from landingData.js
 import { contentData, reviewsData } from './landingData';
@@ -16,7 +16,7 @@ import { contentData, reviewsData } from './landingData';
 function Landing() {
   const [services, setServices] = useState([]);
   const [showForm, setShowForm] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //true
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -113,7 +113,7 @@ function Landing() {
         {services.map((service) => (
           <div
             key={service._id}
-            className='border-[#7D7987] p-4 py-6 md:py-8 mb-4 border rounded-2xl cursor-pointer hover:transform hover:scale-105 transition-transform duration-300 ease-in-out w-4/5 md:w-5/12 lg:w-1/4'
+            className='border-[#7D7987] p-4 py-6 md:py-8 mb-4 border-2 rounded-2xl cursor-pointer hover:transform hover:scale-105 transition-transform duration-300 ease-in-out w-4/5 md:w-5/12 lg:w-1/4'
           >
             <h1 className='text-lg md:text-xl font-semibold mb-2 py-2'>{service.heading}</h1>
             <p className='text-xs md:text-sm text-[#7D7987] mb-2'>{service.description}</p>

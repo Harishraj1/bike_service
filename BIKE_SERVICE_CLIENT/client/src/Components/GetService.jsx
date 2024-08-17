@@ -64,9 +64,8 @@ const GetService = ({ services, onClose }) => {
     if (!validate()) {
       return;
     }
-
-        // Close the form immediately after submission starts
-        onClose();
+      // Close the form immediately after submission starts
+      onClose();
 
     const bookingDetails = {
       name,
