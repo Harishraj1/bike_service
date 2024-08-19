@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import footer_logo from './asset/footer_logo.png';
+=======
+import footer_logo from './images/footer_logo.png';
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
 
 function Footer({ isLoggedIn }) {
   return (

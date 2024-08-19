@@ -67,7 +67,11 @@ function AdminPanel() {
   return (
     <div>
       <div className='flex'>
+<<<<<<< HEAD
         <Navbar />
+=======
+        <Navbar></Navbar>
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
         <div className='flex-1 p-6 ml-72 overflow-y-auto'>
           <h1 className='text-2xl font-bold mb-4'>Add New Admin</h1>
           {message && <p className="text-green-500 mb-4">{message}</p>}

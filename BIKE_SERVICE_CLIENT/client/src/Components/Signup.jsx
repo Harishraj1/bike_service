@@ -1,16 +1,47 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import axios from 'axios';
 import Button from '@mui/material/Button';
+=======
+
+import React, { useState } from 'react';
+import axios from 'axios';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+<<<<<<< HEAD
 import logo from "./asset/logo.png";
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
+=======
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import logo from "./images/logo.png";
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+const defaultTheme = createTheme();
+
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
 function SignUp() {
   const [name, setName] = useState('');
   const [newemail, setNewEmail] = useState('');
@@ -62,7 +93,13 @@ function SignUp() {
   };
 
   return (
+<<<<<<< HEAD
       <Container component="main" maxWidth="xs" className="fadeInZoom">
+=======
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs" className="fadeInZoom">
+        <CssBaseline />
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
         <Box
           sx={{
             marginTop: 8,
@@ -87,7 +124,11 @@ function SignUp() {
                   autoComplete="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+<<<<<<< HEAD
                   error={errors.name}
+=======
+                  error={!!errors.name}
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
                   helperText={errors.name}
                 />
               </Grid>
@@ -101,7 +142,11 @@ function SignUp() {
                   autoComplete="email"
                   value={newemail}
                   onChange={(e) => setNewEmail(e.target.value)}
+<<<<<<< HEAD
                   error={errors.email}
+=======
+                  error={!!errors.email}
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
                   helperText={errors.email}
                 />
               </Grid>
@@ -156,7 +201,13 @@ function SignUp() {
             </Grid>
           </Box>
         </Box>
+<<<<<<< HEAD
       </Container>
+=======
+        <Copyright sx={{ mt: 5 }} />
+      </Container>
+    </ThemeProvider>
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
   );
 }
 

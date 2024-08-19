@@ -56,7 +56,11 @@ function Service_Avaliable() {
 
     return (
         <div className="flex">
+<<<<<<< HEAD
             <Navbar />
+=======
+            <Navbar></Navbar>
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
             <div className="flex-1 p-6 ml-72 overflow-y-auto">
                 <h1 className="text-3xl font-bold mb-6">Available Services</h1>
                 <div className="mb-6">

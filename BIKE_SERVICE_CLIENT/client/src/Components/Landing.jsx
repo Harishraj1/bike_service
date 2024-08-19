@@ -6,17 +6,33 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { Tilt } from 'react-tilt';
 import GetService from './GetService';
+<<<<<<< HEAD
 import hero_img from './asset/hero_img.png';
 import review_img from './asset/review_img.png';
 import vector from './asset/Vector.png';
 
 // Import data from landingData.js
 import { contentData, reviewsData } from './landingData';
+=======
+import hero_img from './images/hero_img.png';
+import hero_icon1 from './images/hero_icon1.png';
+import hero_icon2 from './images/hero_icon2.png';
+import hero_icon3 from './images/hero_icon3.png';
+import vector from './images/Vector.png';
+import review_img from './images/review_img.png';
+
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faUser } from '@fortawesome/free-solid-svg-icons';
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
 
 function Landing() {
   const [services, setServices] = useState([]);
   const [showForm, setShowForm] = useState(false);
+<<<<<<< HEAD
   const [isLoggedIn, setIsLoggedIn] = useState(false); //true
+=======
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,6 +67,54 @@ function Landing() {
     }
   };
 
+<<<<<<< HEAD
+=======
+  const contentData = [
+    {
+      icon: hero_icon1,
+      title: "Membership\nOrganisations",
+      description: "From personalized services to early access to events, our membership offers you more."
+    },
+    {
+      icon: hero_icon2,
+      title: "National\nAssociations",
+      description: "Join our national association to connect with professionals and shape our industry's future together."
+    },
+    {
+      icon: hero_icon3,
+      title: "Clubs And\nGroups",
+      description: "Become a member of our group and enjoy exclusive events, resources, and a supportive community."
+    }
+  ];
+
+  const reviewsData = [
+    {
+      name: "Jess Santiago",
+      feedback: "Easy booking process and excellent service! My bike is in top condition, and I couldn't be happier with the outcome."
+    },
+    {
+      name: "Cali Huffman",
+      feedback: "Smooth and efficient service from start to finish. My bike rides like new, and the booking was a breeze."
+    },
+    {
+      name: "Denny Rawlings",
+      feedback: "Fantastic experience! Booking was simple, and my bike was returned in perfect working order. Highly recommend!"
+    },
+    {
+      name: "Denny Rawlings",
+      feedback: "I booked my service online, and it was worth it. My bike now runs like a dream—great job!"
+    },
+    {
+      name: "Denny Rawlings",
+      feedback: "The entire process was so convenient, and my bike is performing flawlessly after the service. Highly satisfied!"
+    },
+    {
+      name: "Denny Rawlings",
+      feedback: "Hassle-free booking and outstanding service! My bike feels better than ever—definitely coming back."
+    }
+  ];
+
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
   return (
     <div>
       {/* Navbar */}
@@ -86,6 +150,10 @@ function Landing() {
         </motion.div>
       </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
       {/* Content */}
       <div className='flex flex-col md:flex-row justify-around items-center'>
         {contentData.map((content, index) => (
@@ -99,6 +167,10 @@ function Landing() {
         ))}
       </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
       {/* Service Section */}
       <div id="services-section" className='my-12 mt-20 text-center'>
         <h1 className='text-2xl md:text-3xl font-semibold mb-8 md:mb-12'>Our services</h1>
@@ -113,7 +185,11 @@ function Landing() {
         {services.map((service) => (
           <div
             key={service._id}
+<<<<<<< HEAD
             className='border-[#7D7987] p-4 py-6 md:py-8 mb-4 border-2 rounded-2xl cursor-pointer hover:transform hover:scale-105 transition-transform duration-300 ease-in-out w-4/5 md:w-5/12 lg:w-1/4'
+=======
+            className='border-[#7D7987] p-4 py-6 md:py-8 mb-4 border rounded-2xl cursor-pointer hover:transform hover:scale-105 transition-transform duration-300 ease-in-out w-4/5 md:w-5/12 lg:w-1/4'
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
           >
             <h1 className='text-lg md:text-xl font-semibold mb-2 py-2'>{service.heading}</h1>
             <p className='text-xs md:text-sm text-[#7D7987] mb-2'>{service.description}</p>
@@ -122,6 +198,10 @@ function Landing() {
         ))}
       </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
       {/* Get Service Button */}
       <div className='flex justify-center'>
         <button className='bg-[#AB65F6] text-white p-2 md:p-3 px-6 md:px-8 rounded-full font-xl cursor-pointer text-sm md:text-base' onClick={handleGetServiceClick}>
@@ -135,6 +215,7 @@ function Landing() {
         <img src={vector} alt='' />
       </div>
 
+<<<<<<< HEAD
       {/* Reviews Section */}
       <div className='mx-4 md:mx-10 my-8 md:my-16'>
         <h2 className='text-2xl md:text-3xl font-semibold text-center mb-6 md:mb-8'>What Our Clients Say</h2>
@@ -159,8 +240,38 @@ function Landing() {
 
       {/* Footer */}
       <Footer />
+=======
+<div className='mx-4 md:mx-10 my-8 md:my-16'>
+  <h2 className='text-2xl md:text-3xl font-semibold text-center mb-6 md:mb-8'>What Our Clients Say</h2>
+  <div className='flex gap-4 md:gap-8 overflow-x-auto p-2 md:p-4 scrollbar-hide'>
+    {reviewsData.map((review, index) => (
+      <div 
+        key={index} 
+        className='flex-none bg-white rounded-lg md:rounded-xl p-4 md:p-8 w-72 md:w-96 shadow-lg'
+        style={{ height: 'auto', minHeight: '180px' }}
+      >
+        <div className='flex items-center mb-4 md:mb-6'>
+          <img src={review_img} alt="Reviewer" className='w-10 h-10 md:w-14 md:h-14 rounded-full mr-3 md:mr-4' />
+          <div>
+            <h3 className='font-bold text-base md:text-lg'>{review.name}</h3>
+          </div>
+        </div>
+        <p className='text-gray-700 text-sm md:text-base'>{review.feedback}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+
+      {/* Footer */}
+      <Footer></Footer>
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
     </div>
   );
 }
 
 export default Landing;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304

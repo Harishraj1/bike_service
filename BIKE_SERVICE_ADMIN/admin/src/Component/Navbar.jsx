@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import logo from "./asset/logo.png";
+=======
+import logo from "./images/logo.png";
+>>>>>>> 3a59e0c0cae3583a07327a9002acb48ba8dfe304
 
 function Navbar(){
     return(
