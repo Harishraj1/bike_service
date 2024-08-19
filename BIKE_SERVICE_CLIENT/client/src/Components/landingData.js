@@ -1,4 +1,4 @@
-// landingData.js
+// LandingData.js
 
 import hero_icon1 from './asset/hero_icon1.png';
 import hero_icon2 from './asset/hero_icon2.png';
