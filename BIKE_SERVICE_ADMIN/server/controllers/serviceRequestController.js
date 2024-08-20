@@ -16,7 +16,7 @@ exports.updateServiceRequestStatus = async (req, res) => {
   const { status } = req.body;
 
   try {
-    const serviceRequest = await ServiceRequest.findByIdAndUpdate(id, { status }, { new: true });
+    const serviceRequest = await ServiceRequest.findByIdAndUpdate(id, { status }, { new: true }); // the new:true is used for, after the data updated the the further process will be done or data will be sent. 
 
     if (status === "Ready for delivery") {
       const mailOptions = {
