@@ -6,9 +6,9 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { Tilt } from 'react-tilt';
 import GetService from './GetService';
-import hero_img from './asset/hero_img.png';
-import review_img from './asset/review_img.png';
-import vector from './asset/Vector.png';
+import hero_img from '../asset/hero_img.png';
+import review_img from '../asset/review_img.png';
+import vector from '../asset/Vector.png';
 
 // Import data from landingData.js
 import { contentData, reviewsData } from './landingData';
