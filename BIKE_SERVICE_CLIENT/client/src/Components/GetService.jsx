@@ -15,6 +15,7 @@ const GetService = ({ services, onClose }) => {
   const [selectedServices, setSelectedServices] = useState([]);
   const [totalCost, setTotalCost] = useState(0);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false); // Add loading state
   const navigate = useNavigate();
 
   const handleServiceChange = (service) => {
@@ -64,8 +65,8 @@ const GetService = ({ services, onClose }) => {
     if (!validate()) {
       return;
     }
-      // Close the form immediately after submission starts
-      onClose();
+
+    setLoading(true); // Start loading
 
     const bookingDetails = {
       name,
@@ -83,10 +84,12 @@ const GetService = ({ services, onClose }) => {
 
     try {
       await axios.post('http://localhost:2000/bookservice', bookingDetails);
+      setLoading(false); // Stop loading
       alert('Service booked successfully!');
       localStorage.setItem('formMobileNumber', mobileNumber);
       navigate('/myservices');
     } catch (error) {
+      setLoading(false); // Stop loading in case of error
       console.error('Error booking service:', error);
       alert('An error occurred. Please try again.');
     }
@@ -103,144 +106,154 @@ const GetService = ({ services, onClose }) => {
         >
           <span className='close cursor-pointer text-xl absolute top-4 right-4' onClick={onClose}>&times;</span>
           <h1 className='text-2xl font-bold mb-4 text-center'>Book your Service now</h1>
-          <p className='text-[#6F6C90] mb-4 text-sm text-center'>Please fill the form below to book a service for your bike.</p>
-          <div className='bg-[#F7F7FB] border border-[#BFC1CD] rounded-2xl p-4 md:p-6'>
-            <h1 className='text-lg font-semibold mb-4'>Contact details</h1>
-            <p className='text-sm text-[#6F6C90] mb-6'>Please fill your information so we can get in touch with you</p>
-            <form onSubmit={handleSubmit}>
-              {/* Row 1: Name and Phone Number */}
-              <div className='flex flex-col md:flex-row justify-between mb-4'>
-                <div className='flex-1 mb-4 md:mb-0 md:mr-4'>
-                  <p className='font-semibold text-sm mb-2'>Name</p>
-                  <input 
-                    className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    placeholder="Enter name.."
-                  />
-                  {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-                </div>
-                <div className='flex-1 md:ml-4'>
-                  <p className='font-semibold text-sm mb-2'>Phone Number</p>
-                  <input 
-                    className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
-                    type="text"
-                    value={mobileNumber}
-                    onChange={(e) => setMobileNumber(e.target.value)}
-                    required
-                    placeholder="Enter mobile number.."
-                  />
-                  {errors.mobileNumber && <p className="text-red-500 text-sm mt-1">{errors.mobileNumber}</p>}
-                </div>
-              </div>
-              {/* Row 2: Email and Bike Model */}
-              <div className='flex flex-col md:flex-row justify-between mb-4'>
-                <div className='flex-1 mb-4 md:mb-0 md:mr-4'>
-                  <p className='font-semibold text-sm mb-2'>Email</p>
-                  <input 
-                    className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    placeholder="Enter email.."
-                  />
-                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-                </div>
-                <div className='flex-1 md:ml-4'>
-                  <p className='font-semibold text-sm mb-2'>Bike Model</p>
-                  <input 
-                    className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
-                    type="text"
-                    value={bikeModel}
-                    onChange={(e) => setBikeModel(e.target.value)}
-                    required
-                    placeholder="Enter bike model.."
-                  />
-                  {errors.bikeModel && <p className="text-red-500 text-sm mt-1">{errors.bikeModel}</p>}
-                </div>
-              </div>
-              {/* Row 3: Booking Date and Delivery Date */}
-              <div className='flex flex-col md:flex-row justify-between mb-4'>
-                <div className='flex-1 mb-4 md:mb-0 md:mr-4'>
-                  <p className='font-semibold text-sm mb-2'>Booking Date</p>
-                  <input 
-                    className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
-                    type="date"
-                    value={bookingDate}
-                    onChange={(e) => setBookingDate(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className='flex-1 md:ml-4'>
-                  <p className='font-semibold text-sm mb-2'>Delivery Date</p>
-                  <input 
-                    className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
-                    type="date"
-                    value={deliveryDate}
-                    onChange={(e) => setDeliveryDate(e.target.value)}
-                    required
-                  />
-                </div>
-              </div>
 
-              {/* Row 4: Bike Number and Address */}
-              <div className='flex flex-col md:flex-row justify-between mb-4'>
-                <div className='flex-1 mb-4 md:mb-0 md:mr-4'>
-                  <p className='font-semibold text-sm mb-2'>Address</p>
-                  <input 
-                    className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
-                    type="text"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    required
-                    placeholder="Enter address.."
-                  />
+          {loading ? (
+            <div className='text-center py-10'>
+              {/* Loading..*/}
+              <div className="loader">Processing...</div>
+            </div>
+          ) : (
+            
+            <div className='bg-[#F7F7FB] border border-[#BFC1CD] rounded-2xl p-4 md:p-6'>
+              <p className='text-[#6F6C90] mb-4 text-sm text-center'>Please fill the form below to book a service for your bike.</p>
+              <h1 className='text-lg font-semibold mb-4'>Contact details</h1>
+              <p className='text-sm text-[#6F6C90] mb-6'>Please fill your information so we can get in touch with you</p>
+              <form onSubmit={handleSubmit}>
+                {/* Form content as before */}
+                {/* Row 1: Name and Phone Number */}
+                <div className='flex flex-col md:flex-row justify-between mb-4'>
+                  <div className='flex-1 mb-4 md:mb-0 md:mr-4'>
+                    <p className='font-semibold text-sm mb-2'>Name</p>
+                    <input 
+                      className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                      placeholder="Enter name.."
+                    />
+                    {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                  </div>
+                  <div className='flex-1 md:ml-4'>
+                    <p className='font-semibold text-sm mb-2'>Phone Number</p>
+                    <input 
+                      className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
+                      type="text"
+                      value={mobileNumber}
+                      onChange={(e) => setMobileNumber(e.target.value)}
+                      required
+                      placeholder="Enter mobile number.."
+                    />
+                    {errors.mobileNumber && <p className="text-red-500 text-sm mt-1">{errors.mobileNumber}</p>}
+                  </div>
                 </div>
-                <div className='flex-1 md:ml-4'>
-                  <p className='font-semibold text-sm mb-2'>Bike Number</p>
-                  <input 
-                    className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
-                    type="text"
-                    value={bikeNumber}
-                    onChange={(e) => setbikeNumber(e.target.value)}
-                    required
-                    placeholder="Enter bike number.."
-                  />
-                  {errors.bikeNumber && <p className="text-red-500 text-sm mt-1">{errors.bikeNumber}</p>}
+                {/* Row 2: Email and Bike Model */}
+                <div className='flex flex-col md:flex-row justify-between mb-4'>
+                  <div className='flex-1 mb-4 md:mb-0 md:mr-4'>
+                    <p className='font-semibold text-sm mb-2'>Email</p>
+                    <input 
+                      className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      placeholder="Enter email.."
+                    />
+                    {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                  </div>
+                  <div className='flex-1 md:ml-4'>
+                    <p className='font-semibold text-sm mb-2'>Bike Model</p>
+                    <input 
+                      className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
+                      type="text"
+                      value={bikeModel}
+                      onChange={(e) => setBikeModel(e.target.value)}
+                      required
+                      placeholder="Enter bike model.."
+                    />
+                    {errors.bikeModel && <p className="text-red-500 text-sm mt-1">{errors.bikeModel}</p>}
+                  </div>
                 </div>
-              </div>
+                {/* Row 3: Booking Date and Delivery Date */}
+                <div className='flex flex-col md:flex-row justify-between mb-4'>
+                  <div className='flex-1 mb-4 md:mb-0 md:mr-4'>
+                    <p className='font-semibold text-sm mb-2'>Booking Date</p>
+                    <input 
+                      className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
+                      type="date"
+                      value={bookingDate}
+                      onChange={(e) => setBookingDate(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className='flex-1 md:ml-4'>
+                    <p className='font-semibold text-sm mb-2'>Delivery Date</p>
+                    <input 
+                      className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
+                      type="date"
+                      value={deliveryDate}
+                      onChange={(e) => setDeliveryDate(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
 
-              {/* Services */}
-              <div className='mb-4'>
-                <h1 className='text-lg font-semibold mb-2'>Our services</h1>
-                <p className='text-sm text-[#6F6C90] mb-4'>Please select which service you are interested in.</p>
-                <div className='flex flex-wrap -mx-2'>
-                  {services.map((service) => (
-                    <div key={service._id} className='w-full md:w-1/2 px-2 mb-4'>
-                      <div
-                        className={`cursor-pointer p-4 py-8 border rounded-xl ${selectedServices.includes(service.heading) ? 'border-2 border-green-600' : 'bg-white'}`}
-                        onClick={() => handleServiceChange(service)}
-                      >
-                        <label className='text-xl font-semibold'>{service.heading}</label>
+                {/* Row 4: Bike Number and Address */}
+                <div className='flex flex-col md:flex-row justify-between mb-4'>
+                  <div className='flex-1 mb-4 md:mb-0 md:mr-4'>
+                    <p className='font-semibold text-sm mb-2'>Address</p>
+                    <input 
+                      className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
+                      type="text"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                      required
+                      placeholder="Enter address.."
+                    />
+                  </div>
+                  <div className='flex-1 md:ml-4'>
+                    <p className='font-semibold text-sm mb-2'>Bike Number</p>
+                    <input 
+                      className='w-full border border-[#BFC1CD] py-3 pl-3 pr-3 text-[#6F6C90] rounded-lg text-sm'
+                      type="text"
+                      value={bikeNumber}
+                      onChange={(e) => setbikeNumber(e.target.value)}
+                      required
+                      placeholder="Enter bike number.."
+                    />
+                    {errors.bikeNumber && <p className="text-red-500 text-sm mt-1">{errors.bikeNumber}</p>}
+                  </div>
+                </div>
+
+                {/* Services */}
+                <div className='mb-4'>
+                  <h1 className='text-lg font-semibold mb-2'>Our services</h1>
+                  <p className='text-sm text-[#6F6C90] mb-4'>Please select which service you are interested in.</p>
+                  <div className='flex flex-wrap -mx-2'>
+                    {services.map((service) => (
+                      <div key={service._id} className='w-full md:w-1/2 px-2 mb-4'>
+                        <div
+                          className={`cursor-pointer p-4 py-8 border rounded-xl ${selectedServices.includes(service.heading) ? 'border-2 border-green-600' : 'bg-white'}`}
+                          onClick={() => handleServiceChange(service)}
+                        >
+                          <label className='text-xl font-semibold'>{service.heading}</label>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Total Cost */}
-              <div>
-                <h4 className='text-lg font-semibold'>Total Cost: ₹ {totalCost}</h4>
-              </div>
-              {/* Submit Button */}
-              <div className='text-center mt-4'>
-                <button className='bg-[#4A3AFF] text-white border rounded-xl font-semibold px-6 py-2' type="submit">Book</button>
-              </div>
-            </form>
-          </div>
+                {/* Total Cost */}
+                <div>
+                  <h4 className='text-lg font-semibold'>Total Cost: ₹ {totalCost}</h4>
+                </div>
+                {/* Submit Button */}
+                <div className='text-center mt-4'>
+                  <button className='bg-[#4A3AFF] text-white border rounded-xl font-semibold px-6 py-2' type="submit">Book</button>
+                </div>
+              </form>
+            </div>
+          )}
         </motion.div>
       </div>
     </div>
@@ -248,5 +261,3 @@ const GetService = ({ services, onClose }) => {
 };
 
 export default GetService;
-
-
