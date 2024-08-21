@@ -119,7 +119,6 @@ const GetService = ({ services, onClose }) => {
               <h1 className='text-lg font-semibold mb-4'>Contact details</h1>
               <p className='text-sm text-[#6F6C90] mb-6'>Please fill your information so we can get in touch with you</p>
               <form onSubmit={handleSubmit}>
-                {/* Form content as before */}
                 {/* Row 1: Name and Phone Number */}
                 <div className='flex flex-col md:flex-row justify-between mb-4'>
                   <div className='flex-1 mb-4 md:mb-0 md:mr-4'>

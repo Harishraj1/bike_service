@@ -46,7 +46,7 @@ function Service_Avaliable() {
 
     const handleEditService = async (id) => {
         try {
-            await axios.put(`http://localhost:3005/services/${id}`, editService);
+            await axios.put(`http://localhost:3005/services/${id}`, editService);   
             setEditService(null);
             fetchServices();
         } catch (error) {

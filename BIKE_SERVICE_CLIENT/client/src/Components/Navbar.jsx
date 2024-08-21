@@ -63,7 +63,7 @@ function Navbar({ isLoggedIn, handleLogout, isMyServicePage }) {
         </div>
 
         {/* Mobile Menu Icon */}
-        <div className='md:hidden flex items-center'>
+        <div className='md:hidden'>
           <button onClick={toggleMobileMenu}>
             <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} className='text-xl transition-all duration-500 ease-in-out' />
           </button>

@@ -1,8 +1,8 @@
 // LandingData.js
 
-import hero_icon1 from './asset/hero_icon1.png';
-import hero_icon2 from './asset/hero_icon2.png';
-import hero_icon3 from './asset/hero_icon3.png';
+import hero_icon1 from '../asset/hero_icon1.png';
+import hero_icon2 from '../asset/hero_icon2.png';
+import hero_icon3 from '../asset/hero_icon3.png';
 
 export const contentData = [
   {

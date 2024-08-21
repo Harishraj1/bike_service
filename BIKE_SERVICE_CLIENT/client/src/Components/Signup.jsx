@@ -51,7 +51,6 @@ function SignUp() {
 
     try {
       await axios.post('http://localhost:2000/adduser', { name, email: newemail, mob: newmob, password });
-      localStorage.setItem("loggedInUser", newemail); // Set the logged-in user
       alert('Registration successful!');
       // Redirect to Login page after successful registration
       window.location.href = '/login'
